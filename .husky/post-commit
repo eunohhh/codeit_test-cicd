@@ -1,1 +1,1 @@
-git add . && git commit -m "chore: apply lint/format fixes" || true && git push
+git add . && git commit -m "chore: apply lint/format fixes" && git push
