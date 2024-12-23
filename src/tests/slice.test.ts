@@ -110,3 +110,5 @@ describe('slice function', () => {
     expect(actual).toEqual(output);
   });
 });
+
+// husky 작동 확인용
