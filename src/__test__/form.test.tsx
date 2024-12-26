@@ -1,8 +1,28 @@
 import Form from '@/components/form';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 describe('Form 테스트', () => {
+  const User = userEvent.setup();
+
+  it('input에 값을 입력하면 value에 값이 반영되어야 합니다.', async () => {
+    // Arrange
+    const setTodos = jest.fn();
+    render(<Form setTodos={setTodos} handleSaveToStorage={jest.fn()} />);
+
+    // Act
+    // 1. input 요소를 찾는다.
+    const input = screen.getByRole('textbox');
+    // 2. input 요소를 클릭한다.
+    // await User.click(input);
+    // 3. input 요소에 텍스트를 입력한다.
+    await User.type(input, '할 일 1');
+
+    // Assert
+    expect(input).toHaveValue('할 일 1');
+  });
+
   const renderForm = () => {
     render(<Form setTodos={jest.fn()} handleSaveToStorage={jest.fn()} />);
   };
