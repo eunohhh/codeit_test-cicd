@@ -10,7 +10,11 @@ interface Post {
 }
 
 const FakeFetch = () => {
-  return Promise.resolve<Post>({ id: 1, userId: 1, title: 'fake title', body: 'fake body' });
+  return new Promise<Post>((resolve) => {
+    setTimeout(() => {
+      resolve({ id: 1, userId: 1, title: 'fake title', body: 'fake body' });
+    }, 1000);
+  });
 };
 
 function FetchDataComponent() {

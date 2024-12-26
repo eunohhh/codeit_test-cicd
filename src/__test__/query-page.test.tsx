@@ -106,7 +106,7 @@ describe('QueryPage 테스트', () => {
   it('fetch data component', async () => {
     render(<FetchDataComponent />);
 
-    const listItems = await screen.findByRole('list');
+    const listItems = await screen.findByRole('list', {}, { timeout: 2000 });
 
     expect(listItems).toBeInTheDocument();
   });

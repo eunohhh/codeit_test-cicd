@@ -39,7 +39,12 @@ export const Form: React.FC<FormProps> = ({ setTodos, handleSaveToStorage }) => 
   };
 
   return (
-    <form className="flex flex-col space-y-4" role="form" onSubmit={handleAddTodo}>
+    <form
+      className="flex flex-col space-y-4"
+      role="form"
+      title="create todo"
+      onSubmit={handleAddTodo}
+    >
       <label htmlFor="todo" className="sr-only">
         {'입력'}
       </label>
@@ -49,13 +54,18 @@ export const Form: React.FC<FormProps> = ({ setTodos, handleSaveToStorage }) => 
         value={todo}
         onChange={handleChange}
         placeholder="할 일을 입력하세요"
+        data-testid="todo-form"
       />
       <button
         className="px-4 py-2 text-white rounded-md bg-blue-400"
         type="submit"
         onClick={handleAddTodo}
+        aria-label="create"
       >
         {'생성하기'}
+      </button>
+      <button type="button" onClick={handleAddTodo} aria-label="cancel">
+        {'취소'}
       </button>
     </form>
   );
