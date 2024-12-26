@@ -6,7 +6,7 @@ interface FormProps {
   handleSaveToStorage: (newTodo: TODO) => Promise<void>;
 }
 
-const Form: React.FC<FormProps> = ({ setTodos, handleSaveToStorage }) => {
+export const Form: React.FC<FormProps> = ({ setTodos, handleSaveToStorage }) => {
   const [todo, setTodo] = useState<string>('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,12 +39,12 @@ const Form: React.FC<FormProps> = ({ setTodos, handleSaveToStorage }) => {
   };
 
   return (
-    <form className="flex flex-col space-y-4" data-testid="todo-form" onSubmit={handleAddTodo}>
+    <form className="flex flex-col space-y-4" role="form" onSubmit={handleAddTodo}>
       <label htmlFor="todo" className="sr-only">
         {'입력'}
       </label>
       <input
-        className="px-4 py-2 bg-neutral-100 outline-none rounded-md text-neutral-800"
+        className="px-4 py-2 bg-neutral-100  outline-none  rounded-md"
         id="todo"
         value={todo}
         onChange={handleChange}

@@ -13,6 +13,6 @@ describe('Form 테스트', () => {
     // Act
 
     // Assert
-    expect(screen.getByTestId('todo-form')).toBeInTheDocument();
+    expect(screen.getByRole('form')).toBeInTheDocument();
   });
 });
