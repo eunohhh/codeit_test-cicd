@@ -1,3 +1,4 @@
+import Providers from '@/providers/QueryProvider';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -24,8 +25,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} bg-neutral-100 antialiased`}>
-        <div className="w-full h-screen flex flex-col items-center justify-center">{children}</div>
+      <body
+        aria-label="body"
+        className={`${geistSans.variable} ${geistMono.variable} bg-neutral-100 antialiased`}
+      >
+        <Providers>
+          <div className="w-full h-screen flex flex-col items-center justify-center">
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   );
