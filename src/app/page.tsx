@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 import Form from '@/components/form';
-import { List } from '@/components/List';
+import List from '@/components/List';
 import { TODO } from '@/types/types';
 import {
   fetchAllTodos,
