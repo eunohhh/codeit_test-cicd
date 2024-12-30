@@ -10,12 +10,15 @@ on:
 
 jobs:
   test:
+    env:
+      NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
     continue-on-error: true
-    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [18, 20]
+        os-type: [ubuntu-latest, windows-latest]
 
+    runs-on: ${{ matrix.os-type }}
     steps:
       # 코드 가져오기
       - name: Checkout Code
