@@ -1,0 +1,11 @@
+name: Context Object
+
+on: [push, workflow_dispatch]
+
+jobs:
+  context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Context Object
+        run: |
+          echo "Context: ${{ toJSON(github.event) }}"
