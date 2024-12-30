@@ -12,16 +12,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: pnpm
+          cache: npm
 
-      - name: Install pnpm
-        run: npm install -g pnpm
+      - name: Install npm
+        run: npm install -g npm
 
       - name: Install Dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Run Tests
-        run: pnpm test
+        run: npm run test
 # # main 브랜치에 push 시 자동으로 실행되는 워크플로우
 
 # name: Test Test and Build
