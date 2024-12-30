@@ -18,4 +18,4 @@ jobs:
 
       # 테스트 실행
       - name: Run Tests
-        run: npm test
+        run: npm run test
