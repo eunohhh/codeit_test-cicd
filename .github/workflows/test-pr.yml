@@ -1,0 +1,33 @@
+# 3. PR 이 생성될 때 npm run build 와 npm run test 를 실행하는 워크플로우
+name: Test and Build on PR
+
+on:
+  pull_request:
+    branches:
+      - dev
+      - 'feat/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # 코드 가져오기
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 의존성 파일들 설치
+      - name: Install Dependencies
+        run: npm install
+
+      # 파일 구조 확인
+      - name: Debug File Structure
+        run: |
+          ls -R src/components
+          ls -R src/__test__
+
+      # 테스트 실행
+      - name: Run Tests
+        run: npm run test
+
+      - name: Build
+        run: npm run build
