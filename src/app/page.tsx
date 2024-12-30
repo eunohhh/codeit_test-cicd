@@ -12,6 +12,8 @@ import {
   saveToStorage,
 } from '@/utils/storage-api';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function Home() {
   const [todos, setTodos] = useState<TODO[]>([]);
 
@@ -37,6 +39,10 @@ export default function Home() {
     setTodos([]);
     alert('삭제되었습니다.');
   };
+
+  if (!API_URL) {
+    throw new Error('API_URL is not set');
+  }
 
   useEffect(() => {
     fetchAllTodos().then((items) => setTodos(items));
