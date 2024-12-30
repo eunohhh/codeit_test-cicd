@@ -25,3 +25,19 @@ jobs:
       # 테스트 실행
       - name: Run Tests
         run: npm run test
+
+  # 2. 빌드 job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 코드 가져오기
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 의존성 파일들 설치
+      - name: Install Dependencies
+        run: npm install
+
+      # 빌드 실행
+      - name: Build
+        run: npm run build
