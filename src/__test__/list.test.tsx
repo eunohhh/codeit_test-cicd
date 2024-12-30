@@ -1,7 +1,7 @@
-import { List } from '@/components/List';
 import '@testing-library/jest-dom';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { List } from '../components/List';
 import * as StorageAPI from '../utils/storage-api';
 jest.mock('../utils/storage-api');
 
