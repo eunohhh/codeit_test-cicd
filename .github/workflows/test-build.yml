@@ -10,7 +10,7 @@ jobs:
     steps:
       # 코드 가져오기
       - name: Get Codes
-        run: actions/checkout@v4
+        uses: actions/checkout@v4
 
       # 의존성 파일들 설치
       - name: Install Dependencies
