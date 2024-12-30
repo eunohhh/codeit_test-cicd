@@ -8,4 +8,4 @@ jobs:
     steps:
       - name: Print Context Object
         run: |
-          echo "Context: ${{ toJSON(github.event) }}"
+          echo "Context: ${{ toJSON(github) }}"
