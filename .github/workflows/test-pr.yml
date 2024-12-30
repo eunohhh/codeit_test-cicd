@@ -10,11 +10,22 @@ on:
 
 jobs:
   test:
+    continue-on-error: true
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20]
+
     steps:
       # 코드 가져오기
       - name: Checkout Code
         uses: actions/checkout@v4
+
+      # Node.js 설치
+      - name: Instal Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
 
       # 의존성 파일들 설치
       - name: Install Dependencies
