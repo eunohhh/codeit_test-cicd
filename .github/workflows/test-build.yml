@@ -1,7 +1,14 @@
-# # main 브랜치에 push 시 자동으로 실행되는 워크플로우
+# main 브랜치에 push 시 자동으로 실행되는 워크플로우
 name: Test and Build
-# # push, workflow_dispatch 이벤트 발생 시 실행
-on: [push, workflow_dispatch]
+# push, workflow_dispatch 이벤트 발생 시 실행
+on:
+  # Trigger Event
+  push:
+    # Event Filtering
+    branches:
+      - dev
+
+  workflow_dispatch:
 
 jobs:
   # 1. 테스트 job
