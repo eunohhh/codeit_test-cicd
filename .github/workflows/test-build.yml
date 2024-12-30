@@ -1,45 +1,21 @@
-name: Test and Build
-on: [push, workflow_dispatch]
+# main 브랜치에 push 시 자동으로 실행되는 워크플로우
 
+name: Test Test and Build
+# push, workflow_dispatch 이벤트 발생 시 실행
+on: [push, workflow_dispatch]
 jobs:
+  # 1. 테스트 job
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      # 코드 가져오기
+      - name: Get Codes
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: npm
-
-      - name: Install npm
-        run: npm install -g npm
-
+      # 의존성 파일들 설치
       - name: Install Dependencies
         run: npm install
 
+      # 테스트 실행
       - name: Run Tests
         run: npm run test
-# # main 브랜치에 push 시 자동으로 실행되는 워크플로우
-
-# name: Test Test and Build
-# # push, workflow_dispatch 이벤트 발생 시 실행
-# on: [push, workflow_dispatch]
-# jobs:
-#   # 1. 테스트 job
-#   test:
-#     runs-on: ubuntu-latest
-#     steps:
-#       # 코드 가져오기
-#       - name: Get Codes
-#         uses: actions/checkout@v4
-
-#       # 의존성 파일들 설치
-#       - name: Install Dependencies
-#         run: npm install
-
-#       # 테스트 실행
-#       - name: Run Tests
-#         run: npm run test

@@ -8,7 +8,7 @@ interface ListProps {
   setTodos: Dispatch<SetStateAction<TODO[]>>;
 }
 
-export const List: React.FC<ListProps> = ({ todos, setTodos }) => {
+const List: React.FC<ListProps> = ({ todos, setTodos }) => {
   const handleDelete = async (id: number) => {
     const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
@@ -79,3 +79,5 @@ const Icons: React.FC<{ todo: TODO }> = ({ todo }) => {
     />
   );
 };
+
+export default List;
