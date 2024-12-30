@@ -1,0 +1,52 @@
+# main 브랜치에 push 시 자동으로 실행되는 워크플로우
+name: Test and Build
+# push, workflow_dispatch 이벤트 발생 시 실행
+on:
+  # Trigger Event
+  push:
+    # Event Filtering
+    branches:
+      - dev
+      - 'feat/**'
+
+  workflow_dispatch:
+
+jobs:
+  # 1. 테스트 job
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # 코드 가져오기
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 의존성 파일들 설치
+      - name: Install Dependencies
+        run: npm install
+
+      # 파일 구조 확인
+      - name: Debug File Structure
+        run: |
+          ls -R src/components
+          ls -R src/__test__
+
+      # 테스트 실행
+      - name: Run Tests
+        run: npm run test
+
+  # 2. 빌드 job
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      # 코드 가져오기
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 의존성 파일들 설치
+      - name: Install Dependencies
+        run: npm install
+
+      # 빌드 실행
+      - name: Build
+        run: npm run build
