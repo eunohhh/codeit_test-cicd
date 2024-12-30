@@ -1,0 +1,21 @@
+# doc ==> https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions
+# name: workflow 이름
+name: First workflow
+# on: 워크플로가 트리거 될 이벤트
+# workflow_dispatch: 수동으로 트리거
+on: workflow_dispatch
+# jobs: job 정의
+jobs:
+  # job 이름
+  # jobs.<job_id> 임의의 이름
+  first-jobs:
+    # jobs.<job_id>.runs-on: 실행할 환경
+    runs-on: ubuntu-latest
+    # jobs.<job_id>.steps: 실행할 작업 목록
+    steps:
+      # steps.<step_id>.name: 작업 이름
+      - name: Print Greeting
+        # steps.<step_id>.run: 실행할 cli 명령어
+        run: echo "Hello World!"
+      - name: Print Goodbye
+        run: echo " Done ! Bye"
