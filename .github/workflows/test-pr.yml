@@ -4,6 +4,7 @@ name: Test and Build on PR
 on:
   pull_request:
     branches:
+      - main
       - dev
       - 'feat/**'
 
