@@ -35,8 +35,8 @@ jobs:
 
       - name: set git config
         run: |
-          git config --global user.email "your-email"
-          git config --global user.name "your-id"
+          git config --global user.email "bdohhhhh@gmail.com"
+          git config --global user.name "eunohhh"
           git config --global url.https://${{ secrets.ACCESS_TOKEN_FOR_CI }}@github.com/.insteadOf https://github.com/
 
       - name: create pr
