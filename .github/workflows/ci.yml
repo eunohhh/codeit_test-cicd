@@ -7,7 +7,6 @@ on:
       - 'feat/**'
 env:
   NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
-  ACCESS_TOKEN_FOR_CI: ${{ secrets.ACCESS_TOKEN_FOR_CI }}
 
 jobs:
   run-test:
@@ -33,8 +32,12 @@ jobs:
     steps:
       - name: download codes
         uses: actions/checkout@v4
-        with:
-          persist-credentials: false
+
+      - name: set git config
+        run: |
+          git config --global user.email "your-email"
+          git config --global user.name "your-id"
+          git config --global url.https://${{ secrets.ACCESS_TOKEN_FOR_CI }}@github.com/.insteadOf https://github.com/
 
       - name: create pr
         uses: peter-evans/create-pull-request@v7
