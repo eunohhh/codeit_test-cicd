@@ -39,5 +39,5 @@ jobs:
           title: 'chore created pr test'
           body: 'test'
           base: main
-          branch: ${{ github.ref }}
+          branch: ${{ github.head_ref || github.ref_name }}
           token: ${{ secrets.ACCESS_TOKEN_FOR_CI }}
