@@ -40,14 +40,6 @@ jobs:
     steps:
       - name: download codes
         uses: actions/checkout@v4
-        # with:
-        # persist-credentials: false
-
-      # - name: set git config
-      # run: |
-      # git config --global user.email "bdohhhhh@gmail.com"
-      # git config --global user.name "eunohhh"
-      # git remote set-url origin https://${{ secrets.ACCESS_TOKEN_FOR_CI }}@github.com/${{ github.repository }}
 
       - name: create pr
         uses: peter-evans/create-pull-request@v7
@@ -56,4 +48,11 @@ jobs:
           base: main # 머지 대상은 main
           branch: ${{ github.ref }}
           title: 'chore: dev -> main'
-          body: 'Auto PR'
+          body:
+            'Auto PR'
+
+            # - name: set git config
+      # run: |
+      # git config --global user.email "bdohhhhh@gmail.com"
+      # git config --global user.name "eunohhh"
+      # git remote set-url origin https://${{ secrets.ACCESS_TOKEN_FOR_CI }}@github.com/${{ github.repository }}
