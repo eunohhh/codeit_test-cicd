@@ -5,6 +5,10 @@ on:
     branches:
       - dev
       - 'feat/**'
+
+permissions:
+  contents: write
+
 env:
   NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
 
