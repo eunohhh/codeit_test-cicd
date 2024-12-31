@@ -51,7 +51,7 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           # token: ${{ secrets.ACCESS_TOKEN_FOR_CI }}
-          title: 'chore created pr test'
-          body: 'test'
-          base: main
-          branch: dev
+          base: main # 머지 대상은 main
+          branch: 'pr/dev-${{ github.run_number }}' # dev로부터 새로 만든 임시 브랜치
+          title: 'chore: dev -> main'
+          body: 'Auto PR'
