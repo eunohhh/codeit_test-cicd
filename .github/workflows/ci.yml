@@ -15,8 +15,8 @@ jobs:
     steps:
       - name: download codes
         uses: actions/checkout@v4
-        with:
-          persist-credentials: false
+        # with:
+        # persist-credentials: false
 
       - name: install dependencies
         run: npm install
@@ -34,19 +34,19 @@ jobs:
     steps:
       - name: download codes
         uses: actions/checkout@v4
-        with:
-          persist-credentials: false
+        # with:
+        # persist-credentials: false
 
-      - name: set git config
-        run: |
-          git config --global user.email "bdohhhhh@gmail.com"
-          git config --global user.name "eunohhh"
-          git remote set-url origin https://${{ secrets.ACCESS_TOKEN_FOR_CI }}@github.com/${{ github.repository }}
+      # - name: set git config
+      # run: |
+      # git config --global user.email "bdohhhhh@gmail.com"
+      # git config --global user.name "eunohhh"
+      # git remote set-url origin https://${{ secrets.ACCESS_TOKEN_FOR_CI }}@github.com/${{ github.repository }}
 
       - name: create pr
         uses: peter-evans/create-pull-request@v7
         with:
-          token: ${{ secrets.ACCESS_TOKEN_FOR_CI }}
+          # token: ${{ secrets.ACCESS_TOKEN_FOR_CI }}
           title: 'chore created pr test'
           body: 'test'
           base: main
