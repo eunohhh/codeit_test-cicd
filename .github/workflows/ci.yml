@@ -32,6 +32,7 @@ jobs:
         run: npm run build
 
   create-pr:
+    permissions: write-all
     needs: run-test
     name: Create PR
     runs-on: ubuntu-latest
