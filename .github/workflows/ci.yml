@@ -52,7 +52,7 @@ jobs:
       - name: create pr
         uses: peter-evans/create-pull-request@v7
         with:
-          # token: ${{ secrets.ACCESS_TOKEN_FOR_CI }}
+          token: ${{ secrets.ACCESS_TOKEN_FOR_CI }}
           base: main # 머지 대상은 main
           branch: ${{ github.ref }}
           title: 'chore: dev -> main'
