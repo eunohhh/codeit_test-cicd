@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - dev
+      - 'feat/**'
+env:
+  NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+
+jobs:
+  run-test:
+    name: Run test
+    runs-on: ubuntu-latest
+    steps:
+      - name: download codes
+        run: actions/checkout@v4
+
+      - name: install dependencies
+        run: npm install
+
+      - name: run test
+        run: npm run test
+
+      - name: run build
+        run: npm run build
+
+  create-pr:
+    needs: run-test
+    name: Create PR
+    runs-on: ubuntu-latest
+    steps:
+      - name: download codes
+        run: actions/checkout@v4
+
+      - name: create pr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          title: 'chore created pr test'
+          body: 'test'
+          base: main
+          branch: ${{ github.ref }}
+          token: ${{ secrets.ACCESS_TOKEN_FOR_CI }}
