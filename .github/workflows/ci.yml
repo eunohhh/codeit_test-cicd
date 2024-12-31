@@ -7,6 +7,7 @@ on:
       - 'feat/**'
 env:
   NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+  ACCESS_TOKEN_FOR_CI: ${{ secrets.ACCESS_TOKEN_FOR_CI }}
 
 jobs:
   run-test:
