@@ -33,12 +33,14 @@ jobs:
     steps:
       - name: download codes
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: create pr
         uses: peter-evans/create-pull-request@v7
         with:
+          token: ${{ secrets.ACCESS_TOKEN_FOR_CI }}
           title: 'chore created pr test'
           body: 'test'
           base: main
-          branch: ${{ github.head_ref || github.ref_name }}
-          token: ${{ secrets.ACCESS_TOKEN_FOR_CI }}
+          branch: ${{ github.ref }}
