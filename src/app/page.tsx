@@ -12,8 +12,6 @@ import {
   saveToStorage,
 } from '@/utils/storage-api';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL; // 환경변수 가져오기
-
 export default function Home() {
   const [todos, setTodos] = useState<TODO[]>([]);
 
@@ -39,6 +37,8 @@ export default function Home() {
     setTodos([]);
     alert('삭제되었습니다.');
   };
+
+  const API_URL = process.env.NEXT_PUBLIC_API_URL; // 환경변수 가져오기
 
   if (!API_URL) {
     throw new Error('API_URL is not set');
